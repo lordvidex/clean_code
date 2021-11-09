@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "clean_code",
+    "description": "configuration settings for clean_code dart package",
+    "type": "object",
+    "definitions": {
+        "enabled": {
+            "type": "boolean",
+            "description": "should folder be generated for this type"
+        },
+        "path": {
+            "type": "string",
+            "description": "The path for generation of files of this type"
+        }
+    },
+    "properties": {
+        "clean_code": {
+            "type": "object",
+            "description": "root for the clean_code configuration settings",
+            "properties": {
+                "repositories": {
+                   "properties": {
+                        "enabled": {
+                            "$ref": "#/definitions/enabled",
+                            "default": true
+                        },
+                        "path": {
+                            "$ref": "#/definitions/path"
+                        },
+                        "create_implementation": {
+                            "type": "boolean",
+                            "default": false
+                        },
+                        "implementation_path": {
+                            "$ref": "#/definitions/path"
+                        }
+                    },
+                    "dependencies": {
+                        "create_implementation": {
+                            "implementation_path": {
+                                "$ref": "#/definitions/path"
+                            },
+                            "if": {
+                                "properties": {
+                                    "create_implementation": {
+                                        "enum": [true]
+                                    }
+                                }
+                            },
+                            "then": {
+                                "required": ["implementation_path"]
+                            }
+                        }
+                    }
+                },
+                "entities": {
+                    "properties": {
+                        "enabled": {
+                            "$ref": "#/definitions/enabled",
+                            "default": true
+                        },
+                        "path": {
+                            "$ref": "#/definitions/path"
+                        }
+                    }
+                },
+                "usecases": {
+                    "properties": {
+                        "enabled": {
+                            "$ref": "#/definitions/enabled",
+                            "default": false
+                        },
+                        "path": {
+                            "$ref": "#/definitions/path"
+                        }
+                    }
+                },
+                "models": {
+                    "description": "Domain models ",
+                    "properties": {
+                        "enabled": {
+                            "$ref": "#/definitions/enabled",
+                            "default": true
+                        },
+                        "path": {
+                            "default": "lib/domain/models",
+                            "$ref": "#/definitions/path"
+                        }
+                    }
+                },
+                "di": {
+                    "description": "Dependency Injection settings",
+                    "properties": {
+                        "enabled": {
+                            "$ref": "#/definitions/enabled",
+                            "default": true
+                        },
+                        "path": {
+                            "$ref": "#/definitions/path"
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
