@@ -1,6 +1,6 @@
-import 'package:clean_code/clean_code.dart';
-
 void main(List<String> args) {
   
-  YamlHandler().printYaml();
+  if(args.contains('--help') || args.contains('-h')) {
+
+  }
 }

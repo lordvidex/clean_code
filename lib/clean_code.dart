@@ -1,3 +1,5 @@
 library clean_code;
 
-export 'src/yaml.dart' show YamlHandler;
+export 'src/configs.dart' show CCConfigs;
+export 'src/generator.dart' show CCGenerator;
+export 'src/parser.dart' show CCArgsParser;
